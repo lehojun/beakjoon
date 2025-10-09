@@ -1,13 +1,11 @@
-def Count(mid):
+def Count(len):
     cnt = 1
-    sum = 0
-    for i in range(len(li)-1):
-        sum += li[i+1] - li[i]
-        if sum >= mid:
+    ep = li[0]
+    for i in range(1, n):
+        if li[i] - ep >= len:
             cnt += 1
-            sum = 0
+            ep = li[i]
     return cnt
-
 
 n, c = map(int, input().split())
 li = []
