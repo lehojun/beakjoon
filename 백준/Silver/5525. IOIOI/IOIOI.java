@@ -13,30 +13,21 @@ public class Main {
 		int m = Integer.parseInt(br.readLine());
 		int cnt =0;
 		String s = br.readLine();
-		String p = "";
+		int patternCnt = 0;
 		
-		for(int i=0; i<n; i++) {
-			p += "IO";
-		}
-		p+="I";
-		
-		String ch="";
-		for(int i=0; i<p.length(); i++) {
-			ch+=s.charAt(i);
-		}
-
-		for(int rt=p.length(); rt<s.length(); rt++) {
-			if(ch.equals(p)) {
-				cnt++;
+		for(int i=0; i<m-2; i++) {
+			if(s.charAt(i)=='I' && s.charAt(i+1)=='O' && s.charAt(i+2)=='I') {
+				patternCnt++;
+				
+				if(patternCnt==n) {
+					cnt++;
+					patternCnt--;
+				}
+				i++;
+			} else {
+				patternCnt =0;
 			}
-			ch = ch.substring(1);
-			ch += s.charAt(rt);
 		}
-		if(ch.equals(p)) {
-			cnt++;
-		}
-		
-		System.out.print(cnt);
+		System.out.println(cnt);
 	}
-
 }
